@@ -8,10 +8,23 @@ Group:          Development/System
 Source0:        %{name}-%{version}.tar.bz2
 
 BuildRequires:  pkgconfig
+BuildRequires:  python
 BuildRequires:  pkgconfig(xorg-macros)
+Requires:	python-xcb-proto
 
 %description
 %{summary}.
+
+
+%package -n python-xcb-proto
+Summary:        Python libraries mandatory for XML-XCB Development
+Group:          Development/Libraries/X11
+Requires:       python = %{py_ver}
+
+%description -n python-xcb-proto
+Language-independent Python
+libraries that used to parse an XML description and create objects
+used by Python code generators in individual language bindings.
 
 %prep
 %setup -q
@@ -29,7 +42,13 @@ make %{?_smp_mflags}
 
 %remove_docs
 
+
+
 %files
-%defattr(-,root,root,-)
-%{_includedir}/X11/extensions/*.h
-%{_datadir}/pkgconfig/*.pc
+%{_datadir}/pkgconfig/xcb-proto.pc
+%dir %{_datadir}/xcb/
+%{_datadir}/xcb/*.xsd
+%{_datadir}/xcb/*.xml
+
+%files -n python-xcb-proto
+%python_sitelib/xcbgen/
