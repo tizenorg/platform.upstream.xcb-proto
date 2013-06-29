@@ -6,6 +6,7 @@ Summary:        X C Binding - protocol descriptions
 Url:            http://www.x.org
 Group:          Development/X11 Protocols
 Source0:        %{name}-%{version}.tar.bz2
+Source1001: 	xcb-proto.manifest
 
 BuildRequires:  pkgconfig
 BuildRequires:  python
@@ -29,6 +30,7 @@ used by Python code generators in individual language bindings.
 
 %prep
 %setup -q
+cp %{SOURCE1001} .
 
 %build
 %configure --disable-static \
@@ -45,6 +47,7 @@ make %{?_smp_mflags}
 
 
 %files
+%manifest %{name}.manifest
 %license COPYING
 %{_datadir}/pkgconfig/xcb-proto.pc
 %dir %{_datadir}/xcb/
@@ -52,4 +55,5 @@ make %{?_smp_mflags}
 %{_datadir}/xcb/*.xml
 
 %files -n python-xcb-proto
+%manifest %{name}.manifest
 %python_sitelib/xcbgen/
