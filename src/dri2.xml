@@ -241,6 +241,19 @@ authorization from the authors.
     <field type="CARD32" name="interval" />
   </request>
 
+  <!-- Experimental protocol for TIZEN -->
+
+  <request name="SwapBuffersWithRegion" opcode="50">
+    <field type="DRAWABLE" name="drawable" />
+    <field type="CARD32" name="region" />
+    <pad bytes="20" />
+    <reply>
+      <pad bytes="1" />
+      <field type="CARD32" name="swap_hi" />
+      <field type="CARD32" name="swap_lo" />
+    </reply>
+  </request>
+
   <!-- Version 1.4 -->
 
   <request name="GetParam" opcode="13">
