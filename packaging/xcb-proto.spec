@@ -1,5 +1,5 @@
-Name:         	xcb-proto 
-Version:        1.8
+Name:         	xcb-proto
+Version:        1.10
 Release:        1
 License:        MIT
 Summary:        X C Binding - protocol descriptions
@@ -33,7 +33,7 @@ used by Python code generators in individual language bindings.
 cp %{SOURCE1001} .
 
 %build
-%configure --disable-static \
+%autogen --disable-static \
              --libdir=%{_datadir} \
              --without-xmlto
 
