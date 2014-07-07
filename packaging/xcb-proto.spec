@@ -13,6 +13,10 @@ BuildRequires:  python
 BuildRequires:  pkgconfig(xorg-macros)
 Requires:	python-xcb-proto
 
+%if !%{with x}
+ExclusiveArch:
+%endif
+
 %description
 The xcb-proto package provides the XML-XCB protocol 
 descriptions that libxcb uses to generate the majority of 
