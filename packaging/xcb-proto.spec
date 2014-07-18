@@ -1,3 +1,5 @@
+%bcond_with x
+
 Name:         	xcb-proto
 Version:        1.10
 Release:        1
